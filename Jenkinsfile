@@ -50,7 +50,7 @@ pipeline{
 
        stage('Upload to Nexus') {
     steps {
-        withCredentials([usernamePassword(credentialsId: 'jenkins_nexus_sonarqube', usernameVariable: 'NEXUS_USER', passwordVariable: 'NEXUS_PASS')]) {
+        withCredentials([usernamePassword(credentialsId: 'nexus-token', usernameVariable: 'NEXUS_USER', passwordVariable: 'NEXUS_PASS')]) {
             sh '''
                 echo "Uploading artifacts to Nexus raw repository..."
                 for file in dist/*; do
@@ -66,6 +66,7 @@ pipeline{
     }
 
 }
+
 
 
 
